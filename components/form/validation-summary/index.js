@@ -22,7 +22,7 @@ const ValidationSummary = ({ submitted, components, header }) => {
             const rawText = elementAsString != null ? elementAsString.replace(/<.*?>/g, ' ') : null;
             validationMessage = React.createElement("span", null, rawText);
             const handleScrollToElement = () => {
-                const id = `#${el.props.id}-wrapper`;
+                const id = `${el.props.id}-wrapper`;
                 const element = document.getElementById(id);
                 if (element) {
                     element.scrollIntoView({ behavior: "smooth" });
