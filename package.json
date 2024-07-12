@@ -1,0 +1,24 @@
+{
+  "name": "@helsenorge/form",
+  "author": "Norsk helsenett SF",
+  "version": "28.0.1",
+  "main": "./index.js",
+  "repository": {
+    "type": "tfs",
+    "url": "https://dev.azure.com/nhnfelles/Helsenorge/_git/HN-Core-Frontend?path=%2Fnpm%2Fpackages%2Fform"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "@helsenorge/core-utils": "^28.0.0",
+    "@helsenorge/designsystem-react": "^4.0.0",
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
+  },
+  "dependencies": {
+    "@types/react-collapse": "5.0.1",
+    "react-collapse": "5.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
