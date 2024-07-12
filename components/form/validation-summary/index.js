@@ -1,16 +1,29 @@
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import './styles.scss';
+function filterObjectsByProperty(array, propertyName) {
+    const seen = new Set();
+    return array.filter(item => {
+        const propertyValue = item[propertyName];
+        if (seen.has(propertyValue)) {
+            return false;
+        }
+        else {
+            seen.add(propertyValue);
+            return true;
+        }
+    });
+}
 const ValidationSummary = ({ submitted, components, header }) => {
     if (submitted) {
         const componentsWithErrors = sortComponentsWithErrorsByApperanceInDOM(getComponentsWithErrors(components));
-        const listItems = componentsWithErrors.map((el) => {
+        const listItems = filterObjectsByProperty(componentsWithErrors.map((el) => el.props), 'id').map((el) => {
             let validationMessage;
-            if (el.props.label) {
-                validationMessage = el.props.label;
+            if (el.label) {
+                validationMessage = el.label;
             }
-            else if (el.props.legend) {
-                validationMessage = el.props.legend;
+            else if (el.legend) {
+                validationMessage = el.legend;
             }
             // In case the validationMessage is a JSX.Element (with possibly an
             // arbitrary DOM structure)
@@ -22,13 +35,13 @@ const ValidationSummary = ({ submitted, components, header }) => {
             const rawText = elementAsString != null ? elementAsString.replace(/<.*?>/g, ' ') : null;
             validationMessage = React.createElement("span", null, rawText);
             const handleScrollToElement = () => {
-                const id = `${el.props.id}-wrapper`;
+                const id = `${el.id}-wrapper`;
                 const element = document.getElementById(id);
                 if (element) {
                     element.scrollIntoView({ behavior: "smooth" });
                 }
             };
-            return (React.createElement("li", { key: el.props.id, className: "mol_validation-summary__listitem" },
+            return (React.createElement("li", { key: el.id, className: "mol_validation-summary__listitem" },
                 React.createElement("span", { className: "mol_validation-summary__link", onClick: handleScrollToElement }, validationMessage)));
         });
         if (componentsWithErrors.length) {
