@@ -6,6 +6,8 @@ export interface Option {
     label: string;
     /** Om checkbox'en er checked som default */
     checked?: boolean;
+    /** image of package */
+    image?: string;
     hjelpetrigger?: JSX.Element;
     /** Om checkbox'en er disabled */
     disabled?: boolean;
@@ -59,6 +61,8 @@ interface Props {
     validationTestId?: string;
     /** ClassName til fieldset taggen */
     fieldsetClassName?: string;
+    /** choiceImage is show image */
+    choiceImage?: boolean;
 }
 interface State {
     valid: boolean;
