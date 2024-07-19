@@ -63,11 +63,14 @@ export interface RadioGroupProps {
     testId?: string;
     /** ekstra CSS-class som legges på radiogruppen */
     classNameGroup?: string;
+    /** choiceImage is show image */
+    choiceImage?: boolean;
 }
 export interface Options {
     type: string;
     label: string;
     ariaLabel?: string;
+    image?: string;
     disabled?: boolean;
     content?: JSX.Element;
     hjelpetrigger?: JSX.Element;

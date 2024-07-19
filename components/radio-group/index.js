@@ -4,6 +4,8 @@ import PrivateRadioGroup from './private-radio-group';
 import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 import './styles.scss';
+// @ts-ignore
+import NoImage from '../../img/no-image.jpg';
 class RadioGroup extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -159,14 +161,17 @@ class RadioGroup extends React.Component {
             if (validated) {
                 ariaInvalid['aria-invalid'] = !this.isRadioValid(e.type);
             }
-            return (React.createElement("div", { key: inputId, className: `atom_radio` },
-                React.createElement("input", Object.assign({ id: inputId, onChange: this.onChange, onClick: this.onClick, type: "radio", checked: e.type === selected, value: e.type, "aria-label": e.ariaLabel, disabled: e.disabled ? e.disabled : false, required: i === 0 && isRequired, className: `atom_radio__input ${inputClasses}` }, ariaInvalid)),
-                React.createElement("label", { htmlFor: inputId, className: `atom_radio__label ${labelClasses}` },
-                    React.createElement("span", { tabIndex: -1, className: `atom_radio__checkicon ${checkiconClasses}` },
-                        React.createElement("span", { tabIndex: -1, className: `atom_radio__checkicon_innercicrcle` })),
-                    React.createElement("span", { className: `atom_radio__text ${textClasses}` }, label),
-                    e.content),
-                e.hjelpetrigger));
+            return (React.createElement("div", { key: inputId, className: "choice-image-card" },
+                this.props.choiceImage ? (React.createElement("div", null,
+                    React.createElement("img", { src: e.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } }))) : null,
+                React.createElement("div", { className: "checkbox-container atom_radio" },
+                    React.createElement("input", Object.assign({ id: inputId, onChange: this.onChange, onClick: this.onClick, type: "radio", checked: e.type === selected, value: e.type, "aria-label": e.ariaLabel, disabled: e.disabled ? e.disabled : false, required: i === 0 && isRequired, className: `atom_radio__input ${inputClasses}` }, ariaInvalid)),
+                    React.createElement("label", { htmlFor: inputId, className: `atom_radio__label ${labelClasses}` },
+                        React.createElement("span", { tabIndex: -1, className: `atom_radio__checkicon ${checkiconClasses}` },
+                            React.createElement("span", { tabIndex: -1, className: `atom_radio__checkicon_innercicrcle` })),
+                        React.createElement("span", { className: `atom_radio__text ${textClasses}` }, label),
+                        e.content),
+                    e.hjelpetrigger)));
         });
         const content = (React.createElement(React.Fragment, null,
             React.createElement(PrivateRadioGroup, { name: id, value: selected, classNameGroup: this.props.classNameGroup },
@@ -177,7 +182,7 @@ class RadioGroup extends React.Component {
             !noFieldset ? (React.createElement("fieldset", { className: fieldsetClassName ? fieldsetClassName : '' },
                 this.renderLegend(),
                 this.renderHelp(),
-                content)) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
+                React.createElement("div", { className: "group-container" }, content))) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
     }
 }
 RadioGroup.hnFormComponent = true;
