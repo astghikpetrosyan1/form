@@ -174,7 +174,7 @@ class RadioGroup extends React.Component {
                     e.hjelpetrigger)));
         });
         const content = (React.createElement(React.Fragment, null,
-            React.createElement(PrivateRadioGroup, { name: id, value: selected, classNameGroup: this.props.classNameGroup },
+            React.createElement(PrivateRadioGroup, { name: id, value: selected, classNameGroup: `${this.props.classNameGroup} group-container` },
                 React.createElement(React.Fragment, null, inputFields)),
             children));
         return (React.createElement("div", { className: `mol_validation ${!valid ? 'mol_validation--active' : ''} ${wrapperClassName ? wrapperClassName : ''}`, id: `${id}-wrapper`, "data-testid": testId },
@@ -182,7 +182,7 @@ class RadioGroup extends React.Component {
             !noFieldset ? (React.createElement("fieldset", { className: fieldsetClassName ? fieldsetClassName : '' },
                 this.renderLegend(),
                 this.renderHelp(),
-                React.createElement("div", { className: "group-container" }, content))) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
+                content)) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
     }
 }
 RadioGroup.hnFormComponent = true;
