@@ -52,6 +52,10 @@ export default class CheckBoxGroup extends React.Component {
             return this.props.helpElement;
         }
     }
+    renderImage() {
+        return this.props.showMainImage ? (React.createElement("div", null,
+            React.createElement("img", { src: this.props.image, alt: this.props.text }))) : null;
+    }
     renderLegend() {
         const { legend, legendClassName, isRequired, requiredLabel, optionalLabel, showRequiredLabel, showOptionalLabel, helpButton, subLabel, } = this.props;
         if (!legend) {
@@ -83,6 +87,7 @@ export default class CheckBoxGroup extends React.Component {
             React.createElement("fieldset", { className: this.props.fieldsetClassName, "data-testid": this.props.checkboxTestId },
                 this.renderLegend(),
                 this.renderHelp(),
+                this.renderImage(),
                 React.createElement("div", { className: "group-container" }, this.props.hasInnerWrapper ? React.createElement("div", { className: "atom_checkboxgroup__innerwrap" }, checkboxes) : checkboxes))));
     }
 }

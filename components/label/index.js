@@ -10,6 +10,8 @@ export const Label = React.forwardRef(({ labelText, isNotBold, htmlFor, sublabel
             labelText,
             helpButton,
             sublabelText && React.createElement(Sublabel, { sublabelText: sublabelText })),
+        React.createElement("div", null,
+            React.createElement("img", { src: '', alt: '' })),
         children));
 });
 export default Label;

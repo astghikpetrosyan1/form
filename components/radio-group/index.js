@@ -131,6 +131,10 @@ class RadioGroup extends React.Component {
             return this.props.helpElement;
         }
     }
+    renderImage() {
+        return this.props.showMainImage ? (React.createElement("div", null,
+            React.createElement("img", { src: this.props.image, alt: this.props.text }))) : null;
+    }
     render() {
         const { id, testId, options, wrapperClassName, fieldsetClassName, labelClassName, selected, isRequired, isStyleBlue, isStyleBoxed, noFieldset, ariaLabelledBy, labelStringFetcher, children, } = this.props;
         const { valid, validated } = this.state;
@@ -182,6 +186,7 @@ class RadioGroup extends React.Component {
             !noFieldset ? (React.createElement("fieldset", { className: fieldsetClassName ? fieldsetClassName : '' },
                 this.renderLegend(),
                 this.renderHelp(),
+                this.renderImage(),
                 content)) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
     }
 }

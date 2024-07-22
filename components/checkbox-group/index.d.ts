@@ -63,6 +63,18 @@ interface Props {
     fieldsetClassName?: string;
     /** choiceImage is show image */
     choiceImage?: boolean;
+    /**
+     * showMainImage is boolean to show main image
+     */
+    showMainImage?: boolean;
+    /**
+     * image is main image src
+     */
+    image?: string;
+    /**
+     * text is required label
+     */
+    text?: string;
 }
 interface State {
     valid: boolean;
@@ -76,6 +88,7 @@ export default class CheckBoxGroup extends React.Component<Props, State> {
     validate: (validated?: boolean) => boolean;
     notifyValidated: () => void;
     renderHelp(): JSX.Element | undefined;
+    renderImage(): React.JSX.Element | null;
     renderLegend(): JSX.Element | null;
     render(): React.JSX.Element;
 }

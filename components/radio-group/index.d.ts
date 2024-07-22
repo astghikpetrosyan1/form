@@ -65,6 +65,18 @@ export interface RadioGroupProps {
     classNameGroup?: string;
     /** choiceImage is show image */
     choiceImage?: boolean;
+    /**
+     * showMainImage is boolean to show main image
+     */
+    showMainImage?: boolean;
+    /**
+     * image is main image src
+     */
+    image?: string;
+    /**
+     * text is required label
+     */
+    text?: string;
 }
 export interface Options {
     type: string;
@@ -97,6 +109,7 @@ export declare class RadioGroup extends React.Component<RadioGroupProps, RadioGr
     renderLegend(): JSX.Element | null;
     isRadioValid(value: string): boolean;
     renderHelp(): JSX.Element | undefined;
+    renderImage(): React.JSX.Element | null;
     render(): JSX.Element;
 }
 //# sourceMappingURL=index.d.ts.map
