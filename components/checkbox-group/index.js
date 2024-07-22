@@ -54,7 +54,7 @@ export default class CheckBoxGroup extends React.Component {
     }
     renderImage() {
         return this.props.showMainImage ? (React.createElement("div", null,
-            React.createElement("img", { src: this.props.image, alt: this.props.text }))) : null;
+            React.createElement("img", { src: this.props.image || NoImage, alt: this.props.text }))) : null;
     }
     renderLegend() {
         const { legend, legendClassName, isRequired, requiredLabel, optionalLabel, showRequiredLabel, showOptionalLabel, helpButton, subLabel, } = this.props;
