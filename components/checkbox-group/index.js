@@ -5,6 +5,7 @@ import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 // @ts-ignore
 import NoImage from "../../img/no-image.jpg";
+import { fileType } from '../../utility/utils';
 export default class CheckBoxGroup extends React.Component {
     constructor(props) {
         super(props);
@@ -53,8 +54,9 @@ export default class CheckBoxGroup extends React.Component {
         }
     }
     renderImage() {
-        return this.props.showMainImage ? (React.createElement("div", null,
-            React.createElement("img", { src: this.props.image || NoImage, alt: this.props.text }))) : null;
+        return this.props.showMainImage ? (React.createElement("div", null, !this.props.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'image' ? (React.createElement("img", { src: this.props.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+            React.createElement("source", { src: this.props.image, type: "video/mp4" }),
+            "Your browser does not support the video tag.")) : null)) : null;
     }
     renderLegend() {
         const { legend, legendClassName, isRequired, requiredLabel, optionalLabel, showRequiredLabel, showOptionalLabel, helpButton, subLabel, } = this.props;
@@ -76,8 +78,9 @@ export default class CheckBoxGroup extends React.Component {
         const { validateOnExternalUpdate } = this.props;
         const checkboxes = this.props.checkboxes.map(el => {
             return (React.createElement("div", { key: el.id, className: "choice-image-card" },
-                this.props.choiceImage ? (React.createElement("div", null,
-                    React.createElement("img", { src: el.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } }))) : null,
+                this.props.choiceImage ? (React.createElement("div", null, !el.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(el.image) === 'image' ? (React.createElement("img", { src: el.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(el.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+                    React.createElement("source", { src: el.image, type: "video/mp4" }),
+                    "Your browser does not support the video tag.")) : null)) : null,
                 React.createElement("div", { className: "checkbox-container" },
                     React.createElement(CheckBox, { label: el.label, id: `${this.props.id}-${el.id}`, checked: el.checked, onChange: () => this.props.handleChange(el.id), helpButton: el.hjelpetrigger, disabled: el.disabled, validateOnExternalUpdate: validateOnExternalUpdate, checkboxTestId: `${this.props.checkboxTestId}-${el.id}`, isStyleBlue: this.props.isStyleBlue }))));
         });
