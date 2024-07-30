@@ -16,7 +16,7 @@ export interface Option {
      */
     extension?: {
         url: string;
-        valueSting?: string;
+        valueString?: string;
         valueBoolean?: boolean;
     }[];
 }
@@ -82,7 +82,7 @@ interface Props {
      */
     extension?: {
         url: string;
-        valueSting?: string;
+        valueString?: string;
         valueBoolean?: boolean;
     }[];
 }

@@ -135,7 +135,7 @@ class RadioGroup extends React.Component {
     renderImage() {
         var _a, _b;
         const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
+        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueString : "";
         return showMainImage ? (React.createElement("div", { className: "file-list" }, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
             React.createElement("source", { src: mainImage, type: "video/mp4" }),
             "Your browser does not support the video tag.")) : null)) : null;
@@ -172,7 +172,7 @@ class RadioGroup extends React.Component {
                 ariaInvalid['aria-invalid'] = !this.isRadioValid(e.type);
             }
             const showChoiceImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-            const image = e.extension ? (_b = e.extension.find((extension) => extension.url === IExtentionType.image)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
+            const image = e.extension ? (_b = e.extension.find((extension) => extension.url === IExtentionType.image)) === null || _b === void 0 ? void 0 : _b.valueString : "";
             return (React.createElement("div", { key: inputId, className: "choice-image-card" },
                 showChoiceImage ? (React.createElement("div", null, !image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'image' ? (React.createElement("img", { src: e.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
                     React.createElement("source", { src: e.image, type: "video/mp4" }),

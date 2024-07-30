@@ -56,7 +56,7 @@ export default class CheckBoxGroup extends React.Component {
     renderImage() {
         var _a, _b;
         const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
+        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueString : "";
         return showMainImage ? (React.createElement("div", null, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
             React.createElement("source", { src: mainImage, type: "video/mp4" }),
             "Your browser does not support the video tag.")) : null)) : null;
@@ -83,7 +83,7 @@ export default class CheckBoxGroup extends React.Component {
         const showChoiceImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
         const checkboxes = this.props.checkboxes.map(el => {
             var _a;
-            const choiceImage = el.extension ? (_a = el.extension.find((extension) => extension.url === IExtentionType.image)) === null || _a === void 0 ? void 0 : _a.valueSting : "";
+            const choiceImage = el.extension ? (_a = el.extension.find((extension) => extension.url === IExtentionType.image)) === null || _a === void 0 ? void 0 : _a.valueString : "";
             return (React.createElement("div", { key: el.id, className: "choice-image-card" },
                 showChoiceImage ? (React.createElement("div", { className: "file-list" }, !choiceImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(choiceImage) === 'image' ? (React.createElement("img", { src: choiceImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(choiceImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
                     React.createElement("source", { src: choiceImage, type: "video/mp4" }),

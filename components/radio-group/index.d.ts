@@ -74,7 +74,7 @@ export interface RadioGroupProps {
      */
     extension?: {
         url: string;
-        valueSting?: string;
+        valueString?: string;
         valueBoolean?: boolean;
     }[];
 }
@@ -88,7 +88,7 @@ export interface Options {
     hjelpetrigger?: JSX.Element;
     extension?: {
         url: string;
-        valueSting?: string;
+        valueString?: string;
         valueBoolean?: boolean;
     }[];
 }
