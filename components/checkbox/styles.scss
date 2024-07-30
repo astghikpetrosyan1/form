@@ -97,7 +97,7 @@ input[type='checkbox'] {
     align-items: center;
     color: $black;
     line-height: 1.5rem;
-    padding: 0.625rem 1rem 0.625rem 0;
+    padding: 0.625rem 1rem 0.625rem 10px;
 
     &:hover {
       .atom_checkbox__checkicon:not(.atom_checkbox__checkicon--disabled) {

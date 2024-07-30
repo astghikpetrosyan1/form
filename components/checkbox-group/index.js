@@ -5,7 +5,7 @@ import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 // @ts-ignore
 import NoImage from "../../img/no-image.jpg";
-import { fileType } from '../../utility/utils';
+import { fileType, IExtentionType } from '../../utility/utils';
 export default class CheckBoxGroup extends React.Component {
     constructor(props) {
         super(props);
@@ -54,8 +54,11 @@ export default class CheckBoxGroup extends React.Component {
         }
     }
     renderImage() {
-        return this.props.showMainImage ? (React.createElement("div", null, !this.props.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'image' ? (React.createElement("img", { src: this.props.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
-            React.createElement("source", { src: this.props.image, type: "video/mp4" }),
+        var _a, _b;
+        const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
+        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
+        return showMainImage ? (React.createElement("div", null, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+            React.createElement("source", { src: mainImage, type: "video/mp4" }),
             "Your browser does not support the video tag.")) : null)) : null;
     }
     renderLegend() {
@@ -75,11 +78,15 @@ export default class CheckBoxGroup extends React.Component {
             subLabel && React.createElement(Sublabel, { sublabelText: subLabel })));
     }
     render() {
+        var _a;
         const { validateOnExternalUpdate } = this.props;
+        const showChoiceImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
         const checkboxes = this.props.checkboxes.map(el => {
+            var _a;
+            const choiceImage = el.extension ? (_a = el.extension.find((extension) => extension.url === IExtentionType.image)) === null || _a === void 0 ? void 0 : _a.valueSting : "";
             return (React.createElement("div", { key: el.id, className: "choice-image-card" },
-                this.props.choiceImage ? (React.createElement("div", null, !el.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(el.image) === 'image' ? (React.createElement("img", { src: el.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(el.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
-                    React.createElement("source", { src: el.image, type: "video/mp4" }),
+                showChoiceImage ? (React.createElement("div", { className: "file-list" }, !choiceImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(choiceImage) === 'image' ? (React.createElement("img", { src: choiceImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(choiceImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+                    React.createElement("source", { src: choiceImage, type: "video/mp4" }),
                     "Your browser does not support the video tag.")) : null)) : null,
                 React.createElement("div", { className: "checkbox-container" },
                     React.createElement(CheckBox, { label: el.label, id: `${this.props.id}-${el.id}`, checked: el.checked, onChange: () => this.props.handleChange(el.id), helpButton: el.hjelpetrigger, disabled: el.disabled, validateOnExternalUpdate: validateOnExternalUpdate, checkboxTestId: `${this.props.checkboxTestId}-${el.id}`, isStyleBlue: this.props.isStyleBlue }))));

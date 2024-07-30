@@ -6,7 +6,7 @@ import { Sublabel } from '../label/sublabel';
 import './styles.scss';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType } from '../../utility/utils';
+import { fileType, IExtentionType } from '../../utility/utils';
 class RadioGroup extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -133,8 +133,11 @@ class RadioGroup extends React.Component {
         }
     }
     renderImage() {
-        return this.props.showMainImage ? (React.createElement("div", null, !this.props.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'image' ? (React.createElement("img", { src: this.props.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(this.props.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
-            React.createElement("source", { src: this.props.image, type: "video/mp4" }),
+        var _a, _b;
+        const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
+        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
+        return showMainImage ? (React.createElement("div", { className: "file-list" }, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+            React.createElement("source", { src: mainImage, type: "video/mp4" }),
             "Your browser does not support the video tag.")) : null)) : null;
     }
     render() {
@@ -144,6 +147,7 @@ class RadioGroup extends React.Component {
             'atom_radio__input--boxed': !isStyleBoxed,
         });
         const inputFields = options.map((e, i) => {
+            var _a, _b;
             const inputId = id + '-hn-' + i;
             let label = e.label;
             const labelClasses = classNames({
@@ -167,8 +171,10 @@ class RadioGroup extends React.Component {
             if (validated) {
                 ariaInvalid['aria-invalid'] = !this.isRadioValid(e.type);
             }
+            const showChoiceImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
+            const image = e.extension ? (_b = e.extension.find((extension) => extension.url === IExtentionType.image)) === null || _b === void 0 ? void 0 : _b.valueSting : "";
             return (React.createElement("div", { key: inputId, className: "choice-image-card" },
-                this.props.choiceImage ? (React.createElement("div", null, !e.image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(e.image) === 'image' ? (React.createElement("img", { src: e.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(e.image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+                showChoiceImage ? (React.createElement("div", null, !image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'image' ? (React.createElement("img", { src: e.image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
                     React.createElement("source", { src: e.image, type: "video/mp4" }),
                     "Your browser does not support the video tag.")) : null)) : null,
                 React.createElement("div", { className: "checkbox-container atom_radio" },

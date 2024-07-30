@@ -11,6 +11,14 @@ export interface Option {
     hjelpetrigger?: JSX.Element;
     /** Om checkbox'en er disabled */
     disabled?: boolean;
+    /**
+     * List of extension to check images, show hide conditions
+     */
+    extension?: {
+        url: string;
+        valueSting?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 interface Props {
     /** Unik Id for Checbox gruppen */
@@ -61,12 +69,6 @@ interface Props {
     validationTestId?: string;
     /** ClassName til fieldset taggen */
     fieldsetClassName?: string;
-    /** choiceImage is show image */
-    choiceImage?: boolean;
-    /**
-     * showMainImage is boolean to show main image
-     */
-    showMainImage?: boolean;
     /**
      * image is main image src
      */
@@ -75,6 +77,14 @@ interface Props {
      * text is required label
      */
     text?: string;
+    /**
+     * List of extension to check images, show hide conditions
+     */
+    extension?: {
+        url: string;
+        valueSting?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 interface State {
     valid: boolean;

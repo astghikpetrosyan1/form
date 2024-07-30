@@ -66,17 +66,17 @@ export interface RadioGroupProps {
     /** choiceImage is show image */
     choiceImage?: boolean;
     /**
-     * showMainImage is boolean to show main image
-     */
-    showMainImage?: boolean;
-    /**
-     * image is main image src
-     */
-    image?: string;
-    /**
      * text is required label
      */
     text?: string;
+    /**
+     * List of extension to check images, show hide conditions
+     */
+    extension?: {
+        url: string;
+        valueSting?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export interface Options {
     type: string;
@@ -86,6 +86,11 @@ export interface Options {
     disabled?: boolean;
     content?: JSX.Element;
     hjelpetrigger?: JSX.Element;
+    extension?: {
+        url: string;
+        valueSting?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export interface RadioGroupState {
     lastFocusedValue?: string;

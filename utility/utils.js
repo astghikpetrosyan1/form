@@ -12,4 +12,11 @@ export const fileType = (fileUrl) => {
         return 'unknown';
     }
 };
+export var IExtentionType;
+(function (IExtentionType) {
+    IExtentionType["choiceImage"] = "https://fhir.medlix.org/fhir/StructureDefinition/choiceImage";
+    IExtentionType["mainImage"] = "https://fhir.medlix.org/fhir/StructureDefinition/mainImage";
+    IExtentionType["showMainImage"] = "https://fhir.medlix.org/fhir/StructureDefinition/showMainImage";
+    IExtentionType["image"] = "https://fhir.medlix.org/fhir/StructureDefinition/image";
+})(IExtentionType || (IExtentionType = {}));
 //# sourceMappingURL=utils.js.map
