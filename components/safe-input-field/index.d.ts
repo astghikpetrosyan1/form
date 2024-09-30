@@ -110,6 +110,10 @@ export interface SafeInputFieldProps {
     validationTestId?: string;
     /** Id som benyttes for å hente ut Label i automatiske tester */
     labelTestId?: string;
+    /** Sufix jsx of input */
+    sufix?: string;
+    /** prefix jsx of input */
+    prefix?: string;
 }
 export interface SafeInputFieldState {
     focused?: boolean;

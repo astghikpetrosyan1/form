@@ -344,7 +344,7 @@ class SafeInputField extends React.Component {
         }
     }
     render() {
-        const { className, disabled, size, blurSpinnerAlignment, keepDefaultSize, isRequired, id, inputName, tabIndex, min, max, minLength, type, wrapperClasses, isValidationHidden, placeholder, onKeyDown, ariaLabel, ariaLabelledby, ariaRequired, inputProps, readOnly, helpElement, autocomplete, inputTestId, } = this.props;
+        const { className, disabled, size, blurSpinnerAlignment, keepDefaultSize, isRequired, id, inputName, tabIndex, min, max, minLength, type, wrapperClasses, isValidationHidden, placeholder, onKeyDown, ariaLabel, ariaLabelledby, ariaRequired, inputProps, readOnly, helpElement, autocomplete, inputTestId, sufix, prefix, } = this.props;
         const { value, isValid, validated, loading } = this.state;
         const inputValue = typeof value === 'string' ? value : value ? value.toString() : '';
         const inputClasses = classNames('hn-safe-input', 'atom_input', className, {
@@ -376,7 +376,9 @@ class SafeInputField extends React.Component {
             this.renderLabel(),
             helpElement ? helpElement : null,
             React.createElement("span", null,
+                prefix,
                 React.createElement("input", Object.assign({ ref: this.inputFieldRef, id: inputName, name: inputName, type: type ? type : 'text', value: inputValue, placeholder: placeholder, className: inputClasses, min: min, max: max, minLength: minLength, autoComplete: autocomplete || 'off', tabIndex: tabIndex, "data-testid": inputTestId, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onMouseDown: this.onMouseDown, onKeyDown: onKeyDown, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, "aria-required": ariaRequired || required, required: required, disabled: disabled, readOnly: readOnly }, inputProps, ariaInvalid)),
+                sufix,
                 loading ? React.createElement(Loader, { overlay: "parent", size: "small", className: "atom_input__loader" }) : null),
             this.props.children));
     }
