@@ -371,6 +371,11 @@ class SafeInputField extends React.Component {
         if (validated) {
             ariaInvalid['aria-invalid'] = validated && !isValid;
         }
+        const generateRange = (min, max, steps) => {
+            const stepValue = (max - min) / (steps - 1);
+            return Array.from({ length: steps }, (_, i) => min + i * stepValue);
+        };
+        const splitArray = generateRange(min ? parseInt(String(min)) : 0, max ? parseInt(String(max)) : 100, 5);
         return (React.createElement("div", { className: classes, id: `${id}-wrapper` },
             this.renderErrorMessage(),
             this.renderLabel(),
@@ -378,9 +383,10 @@ class SafeInputField extends React.Component {
             type === 'range' ? (React.createElement("span", { className: "refero-range-value" }, inputValue)) : null,
             React.createElement("span", { className: `refero-${type}-input` },
                 prefix,
-                React.createElement("input", Object.assign({ ref: this.inputFieldRef, id: inputName, name: inputName, type: type ? type : 'text', value: inputValue, placeholder: placeholder, className: inputClasses, min: min, max: max, minLength: minLength, autoComplete: autocomplete || 'off', tabIndex: tabIndex, "data-testid": inputTestId, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onMouseDown: this.onMouseDown, onKeyDown: onKeyDown, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, "aria-required": ariaRequired || required, required: required, disabled: disabled, readOnly: readOnly }, inputProps, ariaInvalid)),
+                React.createElement("input", Object.assign({ ref: this.inputFieldRef, id: inputName, name: inputName, type: type ? type : 'text', value: inputValue, placeholder: placeholder, className: inputClasses, min: min, max: max, minLength: minLength, autoComplete: autocomplete || 'off', tabIndex: tabIndex, "data-testid": inputTestId, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onMouseDown: this.onMouseDown, onKeyDown: onKeyDown, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, "aria-required": ariaRequired || required, required: required, disabled: disabled, readOnly: readOnly, list: `${id}-datalist` }, inputProps, ariaInvalid)),
                 sufix,
                 loading ? React.createElement(Loader, { overlay: "parent", size: "small", className: "atom_input__loader" }) : null),
+            type === 'range' ? (React.createElement("datalist", { id: `${id}-datalist` }, splitArray.map((num) => (React.createElement("option", { value: num, key: num }))))) : null,
             this.props.children));
     }
 }
