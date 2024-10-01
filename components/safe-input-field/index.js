@@ -375,6 +375,7 @@ class SafeInputField extends React.Component {
             this.renderErrorMessage(),
             this.renderLabel(),
             helpElement ? helpElement : null,
+            type === 'range' ? (React.createElement("span", { className: "refero-range-value" }, inputValue)) : null,
             React.createElement("span", { className: `refero-${type}-input` },
                 prefix,
                 React.createElement("input", Object.assign({ ref: this.inputFieldRef, id: inputName, name: inputName, type: type ? type : 'text', value: inputValue, placeholder: placeholder, className: inputClasses, min: min, max: max, minLength: minLength, autoComplete: autocomplete || 'off', tabIndex: tabIndex, "data-testid": inputTestId, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onMouseDown: this.onMouseDown, onKeyDown: onKeyDown, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, "aria-required": ariaRequired || required, required: required, disabled: disabled, readOnly: readOnly }, inputProps, ariaInvalid)),
