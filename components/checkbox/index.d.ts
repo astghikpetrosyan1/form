@@ -39,6 +39,11 @@ export interface CheckboxProps {
     checkboxTestId?: string;
     /** Id som benyttes for å hente ut ValidationError i automatiske tester */
     validationTestId?: string;
+    extension?: {
+        url: string;
+        valueString?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export interface CheckboxState {
     valid: boolean;

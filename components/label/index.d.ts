@@ -15,6 +15,11 @@ interface Props {
     ref?: React.RefObject<HTMLDivElement>;
     /** Id som benyttes for å hente ut komponent i automatiske tester */
     testId?: string;
+    extension?: {
+        url: string;
+        valueString?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export declare const Label: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<Props>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 export default Label;

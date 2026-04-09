@@ -92,6 +92,11 @@ export interface SafeTextareaProps {
     maxLengthText?: string;
     /** Id som benyttes for å hente ut komponent i automatiske tester */
     testId?: string;
+    extension?: {
+        url: string;
+        valueString?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export declare class SafeTextarea extends React.Component<SafeTextareaProps, SafeTextareaState> {
     static hnFormComponent: boolean;

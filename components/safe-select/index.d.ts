@@ -75,6 +75,11 @@ export interface SafeSelectProps {
     validationTestId?: string;
     /** Id som benyttes for å hente ut Label i automatiske tester */
     labelTestId?: string;
+    extension?: {
+        url: string;
+        valueString?: string;
+        valueBoolean?: boolean;
+    }[];
 }
 export interface SafeSelectState {
     isValid: boolean;

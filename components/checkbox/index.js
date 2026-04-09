@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import CheckThick from './CheckThick';
 import ValidationError from '../form/validation-error';
+import MainImage from '../main-image';
 import './styles.scss';
 class CheckBox extends React.Component {
     constructor(props) {
@@ -97,6 +98,7 @@ class CheckBox extends React.Component {
                     React.createElement("span", { className: `atom_checkbox__text ${textClasses}` }, this.props.label),
                     comment),
                 this.props.helpButton ? React.createElement("span", { className: "atom_helptrigger-container" }, this.props.helpButton) : null),
+            React.createElement(MainImage, { extension: this.props.extension }),
             this.renderHelp(),
             this.props.children));
     }
