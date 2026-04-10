@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { CheckBox } from '../checkbox';
 import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
-import MainImage from '../main-image';
 // @ts-ignore
 import NoImage from "../../img/no-image.jpg";
 import { fileType, IExtentionType } from '../../utility/utils';
@@ -55,7 +54,12 @@ export default class CheckBoxGroup extends React.Component {
         }
     }
     renderImage() {
-        return React.createElement(MainImage, { extension: this.props.extension });
+        var _a, _b;
+        const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
+        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueString : "";
+        return showMainImage ? (React.createElement("div", null, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
+            React.createElement("source", { src: mainImage, type: "video/mp4" }),
+            "Your browser does not support the video tag.")) : null)) : null;
     }
     renderLegend() {
         const { legend, legendClassName, isRequired, requiredLabel, optionalLabel, showRequiredLabel, showOptionalLabel, helpButton, subLabel, } = this.props;

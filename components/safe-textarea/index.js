@@ -131,7 +131,7 @@ class SafeTextarea extends React.Component {
                 React.createElement("span", null, label),
                 reqLabel,
                 optLabel));
-            return React.createElement(Label, { htmlFor: id, labelText: labelText, sublabelText: this.renderSubLabel(), helpButton: helpButton, extension: this.props.extension });
+            return React.createElement(Label, { htmlFor: id, labelText: labelText, sublabelText: this.renderSubLabel(), helpButton: helpButton });
         };
         this.renderHelp = () => {
             if (this.props.helpElement) {

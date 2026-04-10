@@ -1,9 +1,0 @@
-.DS_Store
-node_modules/
-lib/
-form/
-.idea/
-.jest-cache/
-coverage/
-test-report.xml
-package-lock.json

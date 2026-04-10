@@ -114,11 +114,6 @@ export interface SafeInputFieldProps {
     sufix?: string;
     /** prefix jsx of input */
     prefix?: string;
-    extension?: {
-        url: string;
-        valueString?: string;
-        valueBoolean?: boolean;
-    }[];
 }
 export interface SafeInputFieldState {
     focused?: boolean;

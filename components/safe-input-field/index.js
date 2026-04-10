@@ -22,7 +22,7 @@ class SafeInputField extends React.Component {
                     !this.props.isRequired && this.props.optionalLabel && this.props.showOptionalLabel ? React.createElement("em", null,
                         " ",
                         this.props.optionalLabel) : ''));
-                return (React.createElement(Label, { labelText: labelText, htmlFor: this.props.inputName, sublabelText: this.props.subLabel, testId: this.props.labelTestId, helpButton: this.props.helpButton, extension: this.props.extension }));
+                return (React.createElement(Label, { labelText: labelText, htmlFor: this.props.inputName, sublabelText: this.props.subLabel, testId: this.props.labelTestId, helpButton: this.props.helpButton }));
             }
             return null;
         };
