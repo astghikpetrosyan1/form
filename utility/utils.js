@@ -19,4 +19,9 @@ export var IExtentionType;
     IExtentionType["showMainImage"] = "https://fhir.medlix.org/fhir/StructureDefinition/showMainImage";
     IExtentionType["image"] = "https://fhir.medlix.org/fhir/StructureDefinition/image";
 })(IExtentionType || (IExtentionType = {}));
+export const shouldRenderMainImage = (extension) => {
+    var _a, _b;
+    const extensions = extension !== null && extension !== void 0 ? extension : [];
+    return (_b = (_a = extensions.find((ext) => ext.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean) !== null && _b !== void 0 ? _b : false;
+};
 //# sourceMappingURL=utils.js.map

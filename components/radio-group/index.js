@@ -7,7 +7,7 @@ import { Sublabel } from '../label/sublabel';
 import './styles.scss';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType, IExtentionType } from '../../utility/utils';
+import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
 class RadioGroup extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -133,9 +133,6 @@ class RadioGroup extends React.Component {
             return this.props.helpElement;
         }
     }
-    renderImage() {
-        return React.createElement(MainImage, { extension: this.props.extension });
-    }
     render() {
         const { id, testId, options, wrapperClassName, fieldsetClassName, labelClassName, selected, isRequired, isStyleBlue, isStyleBoxed, noFieldset, ariaLabelledBy, labelStringFetcher, children, } = this.props;
         const { valid, validated } = this.state;
@@ -191,7 +188,7 @@ class RadioGroup extends React.Component {
             !noFieldset ? (React.createElement("fieldset", { className: fieldsetClassName ? fieldsetClassName : '' },
                 this.renderLegend(),
                 this.renderHelp(),
-                this.renderImage(),
+                shouldRenderMainImage(this.props.extension) ? React.createElement(MainImage, { extension: this.props.extension }) : null,
                 content)) : (React.createElement("div", { "aria-labelledby": ariaLabelledBy, role: "radiogroup" }, content))));
     }
 }

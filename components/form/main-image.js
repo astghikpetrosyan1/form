@@ -1,12 +1,12 @@
 import * as React from 'react';
 // @ts-ignore
-const NoImage = "../../img/no-image.jpg";
-import { fileType, IExtentionType } from '../../utility/utils';
+import NoImage from '../../img/no-image.jpg';
+import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
 export const MainImage = ({ extension, className = 'file-list' }) => {
     var _a, _b;
-    console.log('extension', extension);
-    const showMainImage = extension ? (_a = extension.find((ext) => ext.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-    const mainImage = extension ? (_b = extension.find((ext) => ext.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueString : "";
+    const extensions = extension !== null && extension !== void 0 ? extension : [];
+    const showMainImage = shouldRenderMainImage(extension);
+    const mainImage = (_b = (_a = extensions.find((ext) => ext.url === IExtentionType.mainImage)) === null || _a === void 0 ? void 0 : _a.valueString) !== null && _b !== void 0 ? _b : '';
     if (!showMainImage) {
         return null;
     }

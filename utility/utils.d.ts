@@ -5,4 +5,8 @@ export declare enum IExtentionType {
     showMainImage = "https://fhir.medlix.org/fhir/StructureDefinition/showMainImage",
     image = "https://fhir.medlix.org/fhir/StructureDefinition/image"
 }
+export declare const shouldRenderMainImage: (extension?: Array<{
+    url: string;
+    valueBoolean?: boolean;
+}>) => boolean;
 //# sourceMappingURL=utils.d.ts.map

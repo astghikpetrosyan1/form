@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 import './styles.scss';
 class SafeSelectField extends React.Component {
     constructor(props) {
@@ -170,7 +171,7 @@ class SafeSelectField extends React.Component {
             this.renderErrorMessage(),
             this.renderLabel(),
             this.props.helpElement ? this.props.helpElement : null,
-            React.createElement(MainImage, { extension: this.props.extension }),
+            shouldRenderMainImage(this.props.extension) ? React.createElement(MainImage, { extension: this.props.extension }) : null,
             React.createElement("span", { className: 'atom_select' },
                 React.createElement("select", Object.assign({ ref: this.selectElementRef, id: selectName, name: selectName, value: selected ? selected : selectedValue, tabIndex: this.props.tabIndex, "data-testid": this.props.selectTestId, className: selectClassNames, disabled: disabled, required: !!isRequired, onChange: this.onChange, onFocus: this.onFocus, onKeyDown: this.props.onKeyDown, "aria-label": this.props.ariaLabel, "aria-labelledby": this.props.ariaLabelledby, "aria-required": this.props.ariaRequired || !!isRequired }, ariaInvalid), options)),
             this.props.children));

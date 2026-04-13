@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import CheckThick from './CheckThick';
 import MainImage from '../form/main-image';
+import { shouldRenderMainImage } from '../../utility/utils';
 import ValidationError from '../form/validation-error';
 import './styles.scss';
 class CheckBox extends React.Component {
@@ -99,7 +100,7 @@ class CheckBox extends React.Component {
                     comment),
                 this.props.helpButton ? React.createElement("span", { className: "atom_helptrigger-container" }, this.props.helpButton) : null),
             this.renderHelp(),
-            React.createElement(MainImage, { extension: this.props.extension }),
+            shouldRenderMainImage(this.props.extension) ? React.createElement(MainImage, { extension: this.props.extension }) : null,
             this.props.children));
     }
 }

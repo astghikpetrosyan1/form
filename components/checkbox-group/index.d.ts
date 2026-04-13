@@ -91,7 +91,6 @@ export default class CheckBoxGroup extends React.Component<Props, State> {
     validate: (validated?: boolean) => boolean;
     notifyValidated: () => void;
     renderHelp(): JSX.Element | undefined;
-    renderImage(): React.JSX.Element;
     renderLegend(): JSX.Element | null;
     render(): React.JSX.Element;
 }

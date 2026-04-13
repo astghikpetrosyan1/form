@@ -4,6 +4,7 @@ import Loader from '@helsenorge/designsystem-react/components/Loader';
 import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 import './styles.scss';
 /**
  * Dette tekstinputfeltet kan trygt motta nye props fra parent uten at verdien i inputfeltet overskrives
@@ -381,7 +382,7 @@ class SafeInputField extends React.Component {
             this.renderErrorMessage(),
             this.renderLabel(),
             helpElement ? helpElement : null,
-            React.createElement(MainImage, { extension: this.props.extension }),
+            shouldRenderMainImage(this.props.extension) ? React.createElement(MainImage, { extension: this.props.extension }) : null,
             type === 'range' ? (React.createElement("span", { className: "refero-range-value" }, inputValue)) : null,
             React.createElement("span", { className: `refero-${type}-input` },
                 prefix,

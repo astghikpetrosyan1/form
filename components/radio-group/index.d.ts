@@ -107,7 +107,6 @@ export declare class RadioGroup extends React.Component<RadioGroupProps, RadioGr
     renderLegend(): JSX.Element | null;
     isRadioValid(value: string): boolean;
     renderHelp(): JSX.Element | undefined;
-    renderImage(): React.JSX.Element;
     render(): JSX.Element;
 }
 //# sourceMappingURL=index.d.ts.map
