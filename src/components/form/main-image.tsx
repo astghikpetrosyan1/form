@@ -18,6 +18,7 @@ export const MainImage: React.FC<MainImageProps> = ({ extension }) => {
   if (!showMainImage) {
     return null;
   }
+  console.log("This log will not run because the component is not rendered!");
 
   return (
     <div className="file-list">
