@@ -9,6 +9,7 @@ export const MainImage = ({ extension }) => {
     if (!showMainImage) {
         return null;
     }
+    console.log("This log will not run because the component is not rendered!");
     return (React.createElement("div", { className: "file-list" }, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
         React.createElement("source", { src: mainImage, type: "video/mp4" }),
         "Your browser does not support the video tag.")) : null));
