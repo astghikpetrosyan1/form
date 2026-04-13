@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import PrivateRadioGroup from './private-radio-group';
+import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 import './styles.scss';
@@ -133,12 +134,7 @@ class RadioGroup extends React.Component {
         }
     }
     renderImage() {
-        var _a, _b;
-        const showMainImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-        const mainImage = this.props.extension ? (_b = this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)) === null || _b === void 0 ? void 0 : _b.valueString : "";
-        return showMainImage ? (React.createElement("div", { className: "file-list" }, !mainImage ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'image' ? (React.createElement("img", { src: mainImage || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(mainImage) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
-            React.createElement("source", { src: mainImage, type: "video/mp4" }),
-            "Your browser does not support the video tag.")) : null)) : null;
+        return React.createElement(MainImage, { extension: this.props.extension });
     }
     render() {
         const { id, testId, options, wrapperClassName, fieldsetClassName, labelClassName, selected, isRequired, isStyleBlue, isStyleBoxed, noFieldset, ariaLabelledBy, labelStringFetcher, children, } = this.props;

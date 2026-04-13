@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionValue } from '../form/main-image';
 import './styles.scss';
 export interface RadioGroupProps {
     /**
@@ -72,11 +73,7 @@ export interface RadioGroupProps {
     /**
      * List of extension to check images, show hide conditions
      */
-    extension?: {
-        url: string;
-        valueString?: string;
-        valueBoolean?: boolean;
-    }[];
+    extension?: ExtensionValue[];
 }
 export interface Options {
     type: string;
@@ -86,11 +83,7 @@ export interface Options {
     disabled?: boolean;
     content?: JSX.Element;
     hjelpetrigger?: JSX.Element;
-    extension?: {
-        url: string;
-        valueString?: string;
-        valueBoolean?: boolean;
-    }[];
+    extension?: ExtensionValue[];
 }
 export interface RadioGroupState {
     lastFocusedValue?: string;
@@ -114,7 +107,7 @@ export declare class RadioGroup extends React.Component<RadioGroupProps, RadioGr
     renderLegend(): JSX.Element | null;
     isRadioValid(value: string): boolean;
     renderHelp(): JSX.Element | undefined;
-    renderImage(): React.JSX.Element | null;
+    renderImage(): React.JSX.Element;
     render(): JSX.Element;
 }
 //# sourceMappingURL=index.d.ts.map
