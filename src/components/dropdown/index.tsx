@@ -10,6 +10,7 @@ import ChevronUp from '@helsenorge/designsystem-react/components/Icons/ChevronUp
 import { theme } from '@helsenorge/designsystem-react';
 
 import { FormChild } from '../form';
+import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 
@@ -62,6 +63,7 @@ export interface DropdownProps {
   buttonTestId?: string;
   /** Id som benyttes for å hente ut ValidationError i automatiske tester */
   validationTestId?: string;
+  extension?: ExtensionValue[];
 }
 
 interface DropdownState {
@@ -258,6 +260,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     return (
       <div className={dropdownClasses} ref={this.dropdownRef}>
         {this.renderErrorMessage()}
+        <MainImage extension={this.props.extension} />
         <button
           type="button"
           onClick={this.toggleDropdown}

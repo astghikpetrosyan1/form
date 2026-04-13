@@ -3,6 +3,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import CheckThick from './CheckThick';
+import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 
 import './styles.scss';
@@ -47,6 +48,7 @@ export interface CheckboxProps {
   checkboxTestId?: string;
   /** Id som benyttes for å hente ut ValidationError i automatiske tester */
   validationTestId?: string;
+  extension?: ExtensionValue[];
 }
 
 export interface CheckboxState {
@@ -193,6 +195,7 @@ export class CheckBox extends React.Component<CheckboxProps, CheckboxState> {
           {this.props.helpButton ? <span className="atom_helptrigger-container">{this.props.helpButton}</span> : null}
         </div>
         {this.renderHelp()}
+        <MainImage extension={this.props.extension} />
         {this.props.children}
       </div>
     );

@@ -15,6 +15,7 @@ export interface MainImageProps {
 }
 
 export const MainImage: React.FC<MainImageProps> = ({ extension, className = 'file-list' }) => {
+  console.log('extension', extension);
   const showMainImage = extension ? extension.find((ext) => ext.url === IExtentionType.showMainImage)?.valueBoolean : false;
   const mainImage = extension ? extension.find((ext) => ext.url === IExtentionType.mainImage)?.valueString : "";
 

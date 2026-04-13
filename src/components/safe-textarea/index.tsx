@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import classNames from 'classnames';
 
+import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 
@@ -107,6 +108,7 @@ export interface SafeTextareaProps {
   maxLengthText?: string;
   /** Id som benyttes for å hente ut komponent i automatiske tester */
   testId?: string;
+  extension?: ExtensionValue[];
 }
 
 const getSize = (props: SafeTextareaProps): sizes => {
@@ -442,6 +444,7 @@ export class SafeTextarea extends React.Component<SafeTextareaProps, SafeTextare
         {this.renderErrorMessage()}
         {this.renderLabel()}
         {this.renderHelp()}
+        <MainImage extension={this.props.extension} />
 
         <textarea
           id={id}

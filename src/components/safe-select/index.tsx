@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import classNames from 'classnames';
 
+import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 
@@ -82,6 +83,7 @@ export interface SafeSelectProps {
   validationTestId?: string;
   /** Id som benyttes for å hente ut Label i automatiske tester */
   labelTestId?: string;
+  extension?: ExtensionValue[];
 }
 
 export interface SafeSelectState {
@@ -316,6 +318,7 @@ export default class SafeSelectField extends React.Component<SafeSelectProps, Sa
         {this.renderErrorMessage()}
         {this.renderLabel()}
         {this.props.helpElement ? this.props.helpElement : null}
+        <MainImage extension={this.props.extension} />
         <span className={'atom_select'}>
           <select
             ref={this.selectElementRef}
