@@ -7,7 +7,7 @@ import { Sublabel } from '../label/sublabel';
 import './styles.scss';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
+import { fileType, IExtentionType, resolveMediaUrl, shouldRenderMainImage } from '../../utility/utils';
 class RadioGroup extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -165,7 +165,7 @@ class RadioGroup extends React.Component {
                 ariaInvalid['aria-invalid'] = !this.isRadioValid(e.type);
             }
             const showChoiceImage = this.props.extension ? (_a = this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)) === null || _a === void 0 ? void 0 : _a.valueBoolean : false;
-            const image = e.extension ? (_b = e.extension.find((extension) => extension.url === IExtentionType.image)) === null || _b === void 0 ? void 0 : _b.valueString : "";
+            const image = resolveMediaUrl(e.extension ? (_b = e.extension.find((extension) => extension.url === IExtentionType.image)) === null || _b === void 0 ? void 0 : _b.valueString : "");
             return (React.createElement("div", { key: inputId, className: "choice-image-card" },
                 showChoiceImage ? (React.createElement("div", null, !image ? (React.createElement("img", { src: NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'image' ? (React.createElement("img", { src: image || NoImage, alt: '', width: "223px", height: "200px", style: { objectFit: 'contain' } })) : fileType(image) === 'video' ? (React.createElement("video", { controls: true, style: { width: '100%' } },
                     React.createElement("source", { src: image, type: "video/mp4" }),

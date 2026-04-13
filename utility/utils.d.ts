@@ -1,4 +1,5 @@
 export declare const fileType: (fileUrl: string) => 'image' | 'video' | 'unknown';
+export declare const resolveMediaUrl: (fileUrl?: string) => string;
 export declare enum IExtentionType {
     choiceImage = "https://fhir.medlix.org/fhir/StructureDefinition/choiceImage",
     mainImage = "https://fhir.medlix.org/fhir/StructureDefinition/mainImage",

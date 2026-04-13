@@ -12,6 +12,27 @@ export const fileType = (fileUrl) => {
         return 'unknown';
     }
 };
+const DEV_MEDIA_PREFIX = 'https://cockpit.medlix-dev.org/';
+const isAbsoluteUrl = (value) => /^[a-z][a-z\d+\-.]*:\/\//i.test(value);
+const isDevEnvironment = () => {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+    const host = window.location.hostname.toLowerCase();
+    return host === 'localhost' || host === '127.0.0.1' || host.includes('dev');
+};
+export const resolveMediaUrl = (fileUrl) => {
+    if (!fileUrl) {
+        return '';
+    }
+    if (isAbsoluteUrl(fileUrl) || fileUrl.startsWith('data:') || fileUrl.startsWith('blob:')) {
+        return fileUrl;
+    }
+    if (isDevEnvironment()) {
+        return new URL(fileUrl, DEV_MEDIA_PREFIX).toString();
+    }
+    return fileUrl;
+};
 export var IExtentionType;
 (function (IExtentionType) {
     IExtentionType["choiceImage"] = "https://fhir.medlix.org/fhir/StructureDefinition/choiceImage";
