@@ -8,7 +8,7 @@ import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 // @ts-ignore
 import NoImage from "../../img/no-image.jpg"
-import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
+import { fileType, IExtentionType, resolveMediaUrl, shouldRenderMainImage } from '../../utility/utils';
 
 export interface Option {
   /** Unik Id for Checbox'en */
@@ -186,7 +186,7 @@ export default class CheckBoxGroup extends React.Component<Props, State> {
     const showChoiceImage = this.props.extension ? this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)?.valueBoolean : false
 
     const checkboxes = this.props.checkboxes.map(el => {
-      const choiceImage = el.extension ? el.extension.find((extension) => extension.url === IExtentionType.image)?.valueString : ""
+      const choiceImage = resolveMediaUrl(el.extension ? el.extension.find((extension) => extension.url === IExtentionType.image)?.valueString : "")
       return (
         <div key={el.id} className="choice-image-card">
           { showChoiceImage ? (

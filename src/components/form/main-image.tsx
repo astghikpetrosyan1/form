@@ -1,7 +1,7 @@
 import * as React from 'react';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
+import { fileType, IExtentionType, resolveMediaUrl, shouldRenderMainImage } from '../../utility/utils';
 
 export interface ExtensionValue {
   url: string;
@@ -17,7 +17,7 @@ export interface MainImageProps {
 export const MainImage: React.FC<MainImageProps> = ({ extension, className = 'file-list' }) => {
   const extensions = extension ?? [];
   const showMainImage = shouldRenderMainImage(extension);
-  const mainImage = extensions.find((ext) => ext.url === IExtentionType.mainImage)?.valueString ?? '';
+  const mainImage = resolveMediaUrl(extensions.find((ext) => ext.url === IExtentionType.mainImage)?.valueString);
 
   if (!showMainImage) {
     return null;

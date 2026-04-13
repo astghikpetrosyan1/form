@@ -10,7 +10,7 @@ import { Sublabel } from '../label/sublabel';
 import './styles.scss';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
+import { fileType, IExtentionType, resolveMediaUrl, shouldRenderMainImage } from '../../utility/utils';
 
 export interface RadioGroupProps {
   /**
@@ -310,7 +310,7 @@ export class RadioGroup extends React.Component<RadioGroupProps, RadioGroupState
       }
 
       const showChoiceImage = this.props.extension ? this.props.extension.find((extension) => extension.url === IExtentionType.choiceImage)?.valueBoolean : false
-      const image = e.extension ? e.extension.find((extension) => extension.url === IExtentionType.image)?.valueString : ""
+      const image = resolveMediaUrl(e.extension ? e.extension.find((extension) => extension.url === IExtentionType.image)?.valueString : "")
 
 
       return (
