@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Loader from '@helsenorge/designsystem-react/components/Loader';
+import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 import './styles.scss';
@@ -380,6 +381,7 @@ class SafeInputField extends React.Component {
             this.renderErrorMessage(),
             this.renderLabel(),
             helpElement ? helpElement : null,
+            React.createElement(MainImage, { extension: this.props.extension }),
             type === 'range' ? (React.createElement("span", { className: "refero-range-value" }, inputValue)) : null,
             React.createElement("span", { className: `refero-${type}-input` },
                 prefix,

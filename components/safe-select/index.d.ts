@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionValue } from '../form/main-image';
 import './styles.scss';
 export interface SafeSelectProps {
     /** Unik ID */
@@ -75,6 +76,7 @@ export interface SafeSelectProps {
     validationTestId?: string;
     /** Id som benyttes for å hente ut Label i automatiske tester */
     labelTestId?: string;
+    extension?: ExtensionValue[];
 }
 export interface SafeSelectState {
     isValid: boolean;

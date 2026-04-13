@@ -6,6 +6,7 @@ import ChevronDown from '@helsenorge/designsystem-react/components/Icons/Chevron
 import ChevronRight from '@helsenorge/designsystem-react/components/Icons/ChevronRight';
 import ChevronUp from '@helsenorge/designsystem-react/components/Icons/ChevronUp';
 import { theme } from '@helsenorge/designsystem-react';
+import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 import './styles.scss';
@@ -160,6 +161,7 @@ export class Dropdown extends React.Component {
         const joinedName = this.props.name ? this.props.name.replace(' ', '_') : '';
         return (React.createElement("div", { className: dropdownClasses, ref: this.dropdownRef },
             this.renderErrorMessage(),
+            React.createElement(MainImage, { extension: this.props.extension }),
             React.createElement("button", { type: "button", onClick: this.toggleDropdown, className: dropdownButtonClasses, ref: this.buttonRef, "aria-expanded": open, "aria-controls": joinedName, "data-testid": this.props.buttonTestId, onFocus: this.onFocus, onBlur: this.onBlur },
                 icon,
                 React.createElement("span", { className: 'mol_dropdown__button-text' }, this.renderLabel()),

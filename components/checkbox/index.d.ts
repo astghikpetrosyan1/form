@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionValue } from '../form/main-image';
 import './styles.scss';
 export interface CheckboxProps {
     /** Unik Id for Input */
@@ -39,6 +40,7 @@ export interface CheckboxProps {
     checkboxTestId?: string;
     /** Id som benyttes for å hente ut ValidationError i automatiske tester */
     validationTestId?: string;
+    extension?: ExtensionValue[];
 }
 export interface CheckboxState {
     valid: boolean;

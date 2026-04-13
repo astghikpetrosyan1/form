@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionValue } from '../form/main-image';
 /**
  * Dette tekstområdet kan trygt motta nye props fra parent uten at verdien i inputfeltet overskrives
  * hvis feltet redigeres akkurat idet de nye propene sendes inn fra parent. Endringer av feltet blir
@@ -92,6 +93,7 @@ export interface SafeTextareaProps {
     maxLengthText?: string;
     /** Id som benyttes for å hente ut komponent i automatiske tester */
     testId?: string;
+    extension?: ExtensionValue[];
 }
 export declare class SafeTextarea extends React.Component<SafeTextareaProps, SafeTextareaState> {
     static hnFormComponent: boolean;

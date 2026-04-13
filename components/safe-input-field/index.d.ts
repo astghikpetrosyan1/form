@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionValue } from '../form/main-image';
 import './styles.scss';
 interface InputProps {
     step?: string;
@@ -114,6 +115,7 @@ export interface SafeInputFieldProps {
     sufix?: string;
     /** prefix jsx of input */
     prefix?: string;
+    extension?: ExtensionValue[];
 }
 export interface SafeInputFieldState {
     focused?: boolean;

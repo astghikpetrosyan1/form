@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import MainImage from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
 import toolkitstyles from './styles.module.scss';
@@ -273,6 +274,7 @@ class SafeTextarea extends React.Component {
             this.renderErrorMessage(),
             this.renderLabel(),
             this.renderHelp(),
+            React.createElement(MainImage, { extension: this.props.extension }),
             React.createElement("textarea", Object.assign({ id: id, ref: this.textareaRef, value: value || '', className: textAreaClasses, style: { resize: 'none' }, minLength: minlength, rows: rows, placeholder: placeholder, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, 
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus: autoFocus, disabled: disabled, required: required, "aria-required": required, "aria-label": ariaLabel, "data-testid": this.props.testId, readOnly: readOnly }, ariaInvalid)),

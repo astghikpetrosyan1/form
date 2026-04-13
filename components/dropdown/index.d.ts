@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FormChild } from '../form';
+import { ExtensionValue } from '../form/main-image';
 import './styles.scss';
 export interface DropdownProps {
     /** Unik ID */
@@ -47,6 +48,7 @@ export interface DropdownProps {
     buttonTestId?: string;
     /** Id som benyttes for å hente ut ValidationError i automatiske tester */
     validationTestId?: string;
+    extension?: ExtensionValue[];
 }
 interface DropdownState {
     focus: boolean;
