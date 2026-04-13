@@ -13,6 +13,7 @@ import { FormChild } from '../form';
 import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 
 import './styles.scss';
 
@@ -260,7 +261,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     return (
       <div className={dropdownClasses} ref={this.dropdownRef}>
         {this.renderErrorMessage()}
-        <MainImage extension={this.props.extension} />
+        {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
         <button
           type="button"
           onClick={this.toggleDropdown}

@@ -8,7 +8,7 @@ import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 // @ts-ignore
 import NoImage from "../../img/no-image.jpg"
-import { fileType, IExtentionType } from '../../utility/utils';
+import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
 
 export interface Option {
   /** Unik Id for Checbox'en */
@@ -154,10 +154,6 @@ export default class CheckBoxGroup extends React.Component<Props, State> {
     }
   }
 
-  renderImage() {
-    return <MainImage extension={this.props.extension} />;
-  }
-
   renderLegend(): JSX.Element | null {
     const {
       legend,
@@ -236,7 +232,7 @@ export default class CheckBoxGroup extends React.Component<Props, State> {
         <fieldset className={this.props.fieldsetClassName} data-testid={this.props.checkboxTestId}>
           {this.renderLegend()}
           {this.renderHelp()}
-          {this.renderImage()}
+          {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
           <div className="group-container">
             {this.props.hasInnerWrapper ? <div className="atom_checkboxgroup__innerwrap">{checkboxes}</div> : checkboxes}
           </div>

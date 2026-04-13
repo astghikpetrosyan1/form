@@ -7,6 +7,7 @@ import Loader from '@helsenorge/designsystem-react/components/Loader';
 import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 
 import './styles.scss';
 
@@ -609,7 +610,7 @@ export default class SafeInputField extends React.Component<SafeInputFieldProps,
         {this.renderErrorMessage()}
         {this.renderLabel()}
         {helpElement ? helpElement : null}
-        <MainImage extension={this.props.extension} />
+        {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
         { type === 'range' ? (
           <span className="refero-range-value">
           {inputValue}

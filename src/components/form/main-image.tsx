@@ -1,7 +1,7 @@
 import * as React from 'react';
 // @ts-ignore
-const NoImage = "../../img/no-image.jpg";
-import { fileType, IExtentionType } from '../../utility/utils';
+import NoImage from '../../img/no-image.jpg';
+import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
 
 export interface ExtensionValue {
   url: string;
@@ -15,9 +15,9 @@ export interface MainImageProps {
 }
 
 export const MainImage: React.FC<MainImageProps> = ({ extension, className = 'file-list' }) => {
-  console.log('extension', extension);
-  const showMainImage = extension ? extension.find((ext) => ext.url === IExtentionType.showMainImage)?.valueBoolean : false;
-  const mainImage = extension ? extension.find((ext) => ext.url === IExtentionType.mainImage)?.valueString : "";
+  const extensions = extension ?? [];
+  const showMainImage = shouldRenderMainImage(extension);
+  const mainImage = extensions.find((ext) => ext.url === IExtentionType.mainImage)?.valueString ?? '';
 
   if (!showMainImage) {
     return null;

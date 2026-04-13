@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 
 import toolkitstyles from './styles.module.scss';
 
@@ -444,7 +445,7 @@ export class SafeTextarea extends React.Component<SafeTextareaProps, SafeTextare
         {this.renderErrorMessage()}
         {this.renderLabel()}
         {this.renderHelp()}
-        <MainImage extension={this.props.extension} />
+        {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
 
         <textarea
           id={id}

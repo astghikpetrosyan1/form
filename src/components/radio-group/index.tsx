@@ -10,7 +10,7 @@ import { Sublabel } from '../label/sublabel';
 import './styles.scss';
 // @ts-ignore
 import NoImage from '../../img/no-image.jpg';
-import { fileType, IExtentionType } from '../../utility/utils';
+import { fileType, IExtentionType, shouldRenderMainImage } from '../../utility/utils';
 
 export interface RadioGroupProps {
   /**
@@ -253,10 +253,6 @@ export class RadioGroup extends React.Component<RadioGroupProps, RadioGroupState
     }
   }
 
-  renderImage() {
-    return <MainImage extension={this.props.extension} />;
-  }
-
   render(): JSX.Element {
     const {
       id,
@@ -380,7 +376,7 @@ export class RadioGroup extends React.Component<RadioGroupProps, RadioGroupState
           <fieldset className={fieldsetClassName ? fieldsetClassName : ''}>
             {this.renderLegend()}
             {this.renderHelp()}
-            {this.renderImage()}
+            {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
             {content}
           </fieldset>
         ) : (

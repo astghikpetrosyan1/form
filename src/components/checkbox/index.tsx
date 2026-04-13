@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import CheckThick from './CheckThick';
 import MainImage, { ExtensionValue } from '../form/main-image';
+import { shouldRenderMainImage } from '../../utility/utils';
 import ValidationError from '../form/validation-error';
 
 import './styles.scss';
@@ -195,7 +196,7 @@ export class CheckBox extends React.Component<CheckboxProps, CheckboxState> {
           {this.props.helpButton ? <span className="atom_helptrigger-container">{this.props.helpButton}</span> : null}
         </div>
         {this.renderHelp()}
-        <MainImage extension={this.props.extension} />
+        {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
         {this.props.children}
       </div>
     );

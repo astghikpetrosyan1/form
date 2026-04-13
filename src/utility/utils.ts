@@ -18,3 +18,13 @@ export enum IExtentionType {
   showMainImage = 'https://fhir.medlix.org/fhir/StructureDefinition/showMainImage',
   image = 'https://fhir.medlix.org/fhir/StructureDefinition/image',
 }
+
+export const shouldRenderMainImage = (
+  extension?: Array<{
+    url: string;
+    valueBoolean?: boolean;
+  }>
+): boolean => {
+  const extensions = extension ?? [];
+  return extensions.find((ext) => ext.url === IExtentionType.showMainImage)?.valueBoolean ?? false;
+};

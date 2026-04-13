@@ -37,9 +37,6 @@ export const Label = React.forwardRef<HTMLDivElement, React.PropsWithChildren<Pr
           {helpButton}
           {sublabelText && <Sublabel sublabelText={sublabelText} />}
         </label>
-        <div>
-          <img src='' alt='' />
-        </div>
         {children}
       </div>
     );

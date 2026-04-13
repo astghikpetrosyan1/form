@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Label } from '../label';
+import { shouldRenderMainImage } from '../../utility/utils';
 
 import './styles.scss';
 
@@ -318,7 +319,7 @@ export default class SafeSelectField extends React.Component<SafeSelectProps, Sa
         {this.renderErrorMessage()}
         {this.renderLabel()}
         {this.props.helpElement ? this.props.helpElement : null}
-        <MainImage extension={this.props.extension} />
+        {shouldRenderMainImage(this.props.extension) ? <MainImage extension={this.props.extension} /> : null}
         <span className={'atom_select'}>
           <select
             ref={this.selectElementRef}
