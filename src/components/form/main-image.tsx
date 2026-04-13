@@ -1,27 +1,29 @@
 import * as React from 'react';
 // @ts-ignore
-const NoImage = "../../img/no-image.jpg"
+const NoImage = "../../img/no-image.jpg";
 import { fileType, IExtentionType } from '../../utility/utils';
 
-export interface MainImageProps {
-  extension?: {
-    url: string,
-    valueBoolean?: boolean,
-    valueString?: string,
-  }[];
+export interface ExtensionValue {
+  url: string;
+  valueBoolean?: boolean;
+  valueString?: string;
 }
 
-export const MainImage: React.FC<MainImageProps> = ({ extension }) => {
+export interface MainImageProps {
+  extension?: ExtensionValue[];
+  className?: string;
+}
+
+export const MainImage: React.FC<MainImageProps> = ({ extension, className = 'file-list' }) => {
   const showMainImage = extension ? extension.find((ext) => ext.url === IExtentionType.showMainImage)?.valueBoolean : false;
   const mainImage = extension ? extension.find((ext) => ext.url === IExtentionType.mainImage)?.valueString : "";
 
   if (!showMainImage) {
     return null;
   }
-  console.log("This log will not run because the component is not rendered!");
 
   return (
-    <div className="file-list">
+    <div className={className}>
       {!mainImage ? (
         <img src={NoImage} alt='' width="223px" height="200px" style={{ objectFit: 'contain' }} />
       ) : fileType(mainImage) === 'image' ? (

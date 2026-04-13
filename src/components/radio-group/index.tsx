@@ -3,6 +3,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import PrivateRadioGroup from './private-radio-group';
+import MainImage, { ExtensionValue } from '../form/main-image';
 import ValidationError from '../form/validation-error';
 import { Sublabel } from '../label/sublabel';
 
@@ -85,11 +86,7 @@ export interface RadioGroupProps {
   /**
    * List of extension to check images, show hide conditions
    */
-  extension?: {
-    url: string,
-    valueString?: string,
-    valueBoolean?: boolean,
-  }[]
+  extension?: ExtensionValue[];
 }
 
 export interface Options {
@@ -100,11 +97,7 @@ export interface Options {
   disabled?: boolean;
   content?: JSX.Element;
   hjelpetrigger?: JSX.Element;
-  extension?: {
-    url: string,
-    valueString?: string,
-    valueBoolean?: boolean,
-  }[];
+  extension?: ExtensionValue[];
 }
 
 export interface RadioGroupState {
@@ -261,24 +254,7 @@ export class RadioGroup extends React.Component<RadioGroupProps, RadioGroupState
   }
 
   renderImage() {
-
-    const showMainImage = this.props.extension ? this.props.extension.find((extension) => extension.url === IExtentionType.showMainImage)?.valueBoolean : false
-    const mainImage = this.props.extension ? this.props.extension.find((extension) => extension.url === IExtentionType.mainImage)?.valueString : ""
-
-    return showMainImage ? (
-      <div className="file-list">
-        { !mainImage ? (
-          <img src={NoImage} alt='' width="223px" height="200px" style={{ objectFit: 'contain' }} />
-        ) : fileType(mainImage) === 'image' ? (
-          <img src={mainImage || NoImage} alt='' width="223px" height="200px" style={{ objectFit: 'contain' }} />
-        ) : fileType(mainImage) === 'video' ? (
-          <video controls style={{ width: '100%' }}>
-            <source src={mainImage} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : null }
-      </div>
-    ) : null;
+    return <MainImage extension={this.props.extension} />;
   }
 
   render(): JSX.Element {
